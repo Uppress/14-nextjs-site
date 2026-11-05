@@ -1,20 +1,18 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Button from "@/components/Button";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
+import { getServices } from "@/lib/services";
 
 export const metadata: Metadata = {
   title: "Services",
   description: "Brand strategy, digital experiences, and growth for businesses ready for what's next.",
 };
 
-const offerings = [
-  { number: "01", title: "Brand & strategy", summary: "A clear point of view for your next chapter.", details: ["Brand positioning & workshops", "Naming, identity & design systems", "Messaging, voice & storytelling", "Brand architecture & guidelines"] },
-  { number: "02", title: "Digital experiences", summary: "Useful, memorable digital made for real people.", details: ["Websites & digital platforms", "Product & experience design", "Prototyping & user testing", "Creative development & launch"] },
-  { number: "03", title: "Growth & content", summary: "The right ideas, reaching the right people.", details: ["Go-to-market planning", "Content strategy & campaigns", "Digital marketing & optimization", "Ongoing creative partnership"] },
-];
-
 export default function ServicesPage() {
+  const services = getServices();
+
   return (
     <>
       <section className="pb-16 pt-16 sm:pb-24 sm:pt-24">
@@ -29,23 +27,21 @@ export default function ServicesPage() {
 
       <section className="pb-20 sm:pb-28">
         <Container>
-          <div className="space-y-4">
-            {offerings.map((service) => (
-              <article key={service.number} className="grid gap-8 rounded-[2rem] border border-ink/10 bg-white/60 p-6 sm:p-9 lg:grid-cols-[0.7fr_1.3fr] lg:gap-12">
-                <div>
-                  <span className="text-xs font-semibold text-muted">{service.number}</span>
-                  <h2 className="mt-5 text-2xl font-semibold tracking-[-0.05em] text-ink sm:text-3xl">{service.title}</h2>
-                  <p className="mt-3 max-w-sm text-sm leading-6 text-muted">{service.summary}</p>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {services.map((service) => (
+              <Link
+                key={service.slug}
+                href={`/services/${service.slug}`}
+                className="group flex h-full flex-col rounded-[2rem] border border-ink/10 bg-white/60 p-6 transition-all hover:-translate-y-1 hover:border-ink/20 hover:bg-white sm:p-8"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-semibold text-muted">Starting at ${service.priceFrom.toLocaleString("en-US")}</span>
+                  <span aria-hidden="true" className="grid size-11 place-items-center rounded-full bg-[#edf1e4] text-lg text-ink transition-colors group-hover:bg-moss">{service.icon}</span>
                 </div>
-                <ul className="grid content-center gap-3 sm:grid-cols-2 sm:gap-4">
-                  {service.details.map((detail) => (
-                    <li key={detail} className="flex items-center gap-3 rounded-2xl bg-[#edf0e7] px-4 py-4 text-sm text-ink">
-                      <span className="grid size-6 shrink-0 place-items-center rounded-full bg-moss text-xs">✓</span>
-                      {detail}
-                    </li>
-                  ))}
-                </ul>
-              </article>
+                <h2 className="mt-8 text-2xl font-semibold tracking-[-0.05em] text-ink">{service.title}</h2>
+                <p className="mt-3 text-sm leading-6 text-muted">{service.summary}</p>
+                <span className="mt-auto inline-flex pt-7 text-sm font-semibold text-ink">Explore service <span aria-hidden="true" className="ml-2 transition-transform group-hover:translate-x-1">→</span></span>
+              </Link>
             ))}
           </div>
         </Container>

@@ -59,6 +59,229 @@
 			],
 			"isBackground": false,
 			"problemMatcher": []
+		},
+		{
+			"label": "Check services worktree",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"status",
+				"--short"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check changed files",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"status",
+				"--short"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Typecheck service pages",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"typecheck"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Review service page diff",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"--no-pager",
+				"diff",
+				"--",
+				"src/lib/services.ts",
+				"src/app/services/page.tsx",
+				"src/app/services/[slug]/page.tsx",
+				"src/app/services/[slug]/loading.tsx",
+				"src/app/not-found.tsx"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check whitespace errors",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"diff",
+				"--check"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check Windows package manager",
+			"type": "shell",
+			"command": "winget",
+			"args": [
+				"--version"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check Node version",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"--version"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check npm node path",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"--version"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check Node installers",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-Command",
+				"Get-Command nvm,choco,scoop -ErrorAction SilentlyContinue | Select-Object Name,Source"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Download Node.js LTS",
+			"type": "shell",
+			"command": "curl.exe",
+			"args": [
+				"-L",
+				"--fail",
+				"--silent",
+				"--show-error",
+				"https://nodejs.org/dist/v26.13.0/node-v26.13.0-win-x64.zip",
+				"-o",
+				"C:\\Users\\ACE CBT CENTRE\\AppData\\Local\\Temp\\node-v26.13.0-win-x64.zip"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Install Node.js LTS",
+			"type": "shell",
+			"command": "tar.exe",
+			"args": [
+				"-xf",
+				"C:\\Users\\ACE CBT CENTRE\\AppData\\Local\\Temp\\node-v26.13.0-win-x64.zip",
+				"-C",
+				"C:\\Users\\ACE CBT CENTRE\\AppData\\Local"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verify upgraded Node",
+			"type": "shell",
+			"command": "C:\\Users\\ACE CBT CENTRE\\AppData\\Local\\node-v26.13.0-win-x64\\node.exe",
+			"args": [
+				"--version"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verify bundled npm",
+			"type": "shell",
+			"command": "C:\\Users\\ACE CBT CENTRE\\AppData\\Local\\node-v26.13.0-win-x64\\node.exe",
+			"args": [
+				"C:\\Users\\ACE CBT CENTRE\\AppData\\Local\\node-v26.13.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+				"--version"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Typecheck with Node 26",
+			"type": "shell",
+			"command": "C:\\Users\\ACE CBT CENTRE\\AppData\\Local\\node-v26.13.0-win-x64\\node.exe",
+			"args": [
+				"C:\\Users\\ACE CBT CENTRE\\AppData\\Local\\node-v26.13.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+				"run",
+				"typecheck"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Typecheck on Node 26",
+			"type": "shell",
+			"command": "C:\\Users\\ACE CBT CENTRE\\AppData\\Local\\node-v26.13.0-win-x64\\node.exe",
+			"args": [
+				"-e",
+				"const cp=require('node:child_process'); const path=process.execPath.slice(0,process.execPath.lastIndexOf('\\\\')+1)+process.env.PATH; const cli=process.execPath.slice(0,process.execPath.lastIndexOf('\\\\')+1)+'node_modules\\\\npm\\\\bin\\\\npm-cli.js'; const result=cp.spawnSync(process.execPath,[cli,'run','typecheck'],{stdio:'inherit',env:{...process.env,PATH:path}}); process.exitCode=result.status === null ? 1 : result.status;"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Typecheck fresh Node PATH",
+			"type": "shell",
+			"command": "C:\\Users\\ACE CBT CENTRE\\AppData\\Local\\node-v26.13.0-win-x64\\node.exe",
+			"args": [
+				"-e",
+				"const cp=require(\"child_process\"); const dir=process.execPath.slice(0,process.execPath.lastIndexOf(\"\\\\\")+1); const result=cp.spawnSync(process.execPath,[dir+\"node_modules\\\\npm\\\\bin\\\\npm-cli.js\",\"run\",\"typecheck\"],{stdio:\"inherit\",env:{...process.env,PATH:dir+process.env.PATH}}); process.exitCode=result.status === null ? 1 : result.status;"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verify Node through PATH",
+			"type": "shell",
+			"command": "cmd.exe",
+			"args": [
+				"/d",
+				"/c",
+				"set PATH=C:\\Users\\ACE CBT CENTRE\\AppData\\Local\\node-v26.13.0-win-x64;%PATH%&& node --version&& npm --version"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Typecheck with Node 26 PATH",
+			"type": "shell",
+			"command": "cmd.exe",
+			"args": [
+				"/d",
+				"/c",
+				"set PATH=C:\\Users\\ACE CBT CENTRE\\AppData\\Local\\node-v26.13.0-win-x64;%PATH%&& npm run typecheck"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build on Node 26",
+			"type": "shell",
+			"command": "cmd.exe",
+			"args": [
+				"/d",
+				"/c",
+				"set PATH=C:\\Users\\ACE CBT CENTRE\\AppData\\Local\\node-v26.13.0-win-x64;%PATH%&& npm run build"
+			],
+			"isBackground": false,
+			"problemMatcher": []
 		}
 	]
 }
