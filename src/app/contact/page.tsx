@@ -23,7 +23,14 @@ export default function ContactPage() {
               <p className="mt-2">Prefer email? <a className="font-semibold text-ink underline underline-offset-4" href="mailto:hello@northstar.digital">hello@northstar.digital</a></p>
             </div>
           </div>
-          <ContactForm />
+          <div>
+            <ContactForm />
+            <p className="mt-4 px-2 text-sm leading-6 text-muted">
+              In development, messages are saved to a local JSON file. Vercel&apos;s
+              read-only filesystem cannot provide persistent storage, so in the next
+              sessions we&apos;ll connect the form to a Neon Postgres database.
+            </p>
+          </div>
         </div>
       </Container>
     </section>

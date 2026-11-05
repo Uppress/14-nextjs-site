@@ -33,6 +33,32 @@
 			],
 			"isBackground": false,
 			"problemMatcher": []
+		},
+		{
+			"label": "Contact form typecheck",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"typecheck"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Review contact changes",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"--no-pager",
+				"diff",
+				"--",
+				"src/app/contact/actions.ts",
+				"src/app/contact/ContactForm.tsx",
+				"src/app/contact/page.tsx"
+			],
+			"isBackground": false,
+			"problemMatcher": []
 		}
 	]
 }

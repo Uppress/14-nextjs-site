@@ -6,6 +6,11 @@ import { budgetOptions, type ContactFormState, type ContactValues } from "./form
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+function getTextValue(formData: FormData, name: string) {
+  const value = formData.get(name);
+  return typeof value === "string" ? value.trim() : "";
+}
+
 async function saveLocalSubmission(values: ContactValues) {
   const directory = join(process.cwd(), "data");
   const filePath = join(directory, "contact-submissions.json");
@@ -36,10 +41,10 @@ export async function submitContactForm(
   formData: FormData,
 ): Promise<ContactFormState> {
   const values: ContactValues = {
-    name: String(formData.get("name") ?? "").trim(),
-    email: String(formData.get("email") ?? "").trim(),
-    budget: String(formData.get("budget") ?? "").trim(),
-    message: String(formData.get("message") ?? "").trim(),
+    name: getTextValue(formData, "name"),
+    email: getTextValue(formData, "email"),
+    budget: getTextValue(formData, "budget"),
+    message: getTextValue(formData, "message"),
   };
   const errors: ContactFormState["errors"] = {};
 
