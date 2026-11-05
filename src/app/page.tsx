@@ -50,7 +50,6 @@ export default function Home() {
               <div className="relative aspect-[0.95] overflow-hidden rounded-[2rem] bg-[#e6eadb] p-5 sm:p-8">
                 <div className="absolute -left-12 top-1/4 size-64 rounded-full border border-ink/10" />
                 <div className="absolute -left-2 top-[16%] size-72 rounded-full border border-ink/10" />
-                <div className="absolute -left-2 top-[16%] size-72 rounded-full border border-ink/10" />
                 <div className="absolute inset-[15%] rotate-[-12deg] rounded-[2.4rem] bg-[#b7ca8d] shadow-[0_35px_80px_rgba(47,64,33,0.18)]">
                   <div className="absolute inset-[7%] overflow-hidden rounded-[2rem] bg-[#f7f8f3]">
                     <div className="flex items-center justify-between border-b border-ink/10 px-5 py-4">
