@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Button from "@/components/Button";
 import Container from "@/components/Container";
+import { siteUrl } from "@/lib/site";
 import { getService, getServices } from "@/lib/services";
 
 type ServicePageProps = {
@@ -27,6 +28,9 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
     openGraph: {
       title: service.title,
       description: service.summary,
+      url: new URL(`/services/${service.slug}`, siteUrl),
+      siteName: "Northstar Digital",
+      locale: "en_US",
       type: "website",
     },
   };
